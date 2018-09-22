@@ -1,0 +1,10 @@
+
+  <form method="post" action="{% url "articulos:list_filter_articles" %}">
+     {% csrf_token %}
+     <input type="search" id="miBusqueda" name="q" placeholder="Que buscas..."><br>
+     <br>
+     <button type="submit">Search</button>
+     <br><br>
+      {{ form }}
+      <button type="submit">Search</button>
+  </form>

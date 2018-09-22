@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Blog Ver Articulo {% endblock %}
+{% block content %}
+<div class="containe">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                Soy Juan, apacionado por la tecnologia, de tal forma que trabajaria gratis si no fuese que sin dinero no hay comida :b
+                <br><br>
+                {% include "loginOption.html" %}
+            </div>
+        <div class="col-sm-8">
+          {% if object %}
+            <article class="secciones">
+              <div>
+                  <div class="titulosNotas">
+                      {{ object.titulo }}
+                  </div>
+                  <div class="datosAutor">
+                    {% for usuario in object.autor.all %}
+                      Autor: {{ usuario.username }}
+                    {% endfor %}
+                      {{ object.create|date:"Y-m-d" }}
+                  </div>
+                  <div>
+                      {{ object.formatted_markdown|safe }}
+                  </div>
+                  <div>
+                      {{ object.comentario }}
+                  </div>
+              </div>
+            </article>
+          {% endif %}
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock content %}
